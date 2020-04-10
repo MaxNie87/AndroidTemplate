@@ -15,8 +15,7 @@ import dagger.android.support.AndroidSupportInjectionModule
     modules = [
         ActivityModule::class,
         InjectFragmentModule::class,
-        AndroidInjectionModule::class,
-        AndroidSupportInjectionModule::class
+        AndroidInjectionModule::class
     ]
 )
 open interface ActivityComponent {
