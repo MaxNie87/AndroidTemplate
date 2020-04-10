@@ -3,6 +3,7 @@ package com.max.template.di.component
 import android.app.Activity
 import com.max.template.di.module.ActivityModule
 import com.max.template.di.module.InjectFragmentModule
+import com.max.template.di.module.ViewModelModule
 import com.max.template.di.scope.ActivityScope
 import com.max.template.ui.base.DaggerActivity
 import dagger.BindsInstance
@@ -15,7 +16,8 @@ import dagger.android.support.AndroidSupportInjectionModule
     modules = [
         ActivityModule::class,
         InjectFragmentModule::class,
-        AndroidInjectionModule::class
+        AndroidInjectionModule::class,
+        AndroidSupportInjectionModule::class
     ]
 )
 open interface ActivityComponent {

@@ -4,6 +4,7 @@ import android.app.Application
 import com.max.template.App
 import com.max.template.di.module.ApplicationModule
 import com.max.template.di.module.InjectActivityModule
+import com.max.template.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -15,7 +16,8 @@ import javax.inject.Singleton
     modules = [
         ApplicationModule::class,
         InjectActivityModule::class,
-        AndroidInjectionModule::class
+        AndroidInjectionModule::class,
+        AndroidSupportInjectionModule::class
     ]
 )
 interface ApplicationComponent {
