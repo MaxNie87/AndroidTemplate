@@ -9,11 +9,11 @@ import dagger.android.ContributesAndroidInjector
 @Module
 interface InjectFragmentModule {
     @ContributesAndroidInjector
-    abstract fun dashboardFragmentInjector(): DashboardFragment
+    fun dashboardFragmentInjector(): DashboardFragment
 
     @ContributesAndroidInjector
-    abstract fun homeFragmentInjector(): HomeFragment
+    fun homeFragmentInjector(): HomeFragment
 
     @ContributesAndroidInjector
-    abstract fun notificationsFragmentInjector(): NotificationsFragment
+    fun notificationsFragmentInjector(): NotificationsFragment
 }

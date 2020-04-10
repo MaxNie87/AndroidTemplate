@@ -3,11 +3,14 @@ package com.max.template.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
+import javax.inject.Named
 
-class HomeViewModel : ViewModel() {
+//class HomeViewModel(@Inject @Named("something") var str: String) : ViewModel() {
+class HomeViewModel @Inject constructor(@Named("something") var str: String) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
+    private var _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
     }
-    val text: LiveData<String> = _text
+    var text: LiveData<String> = _text
 }
