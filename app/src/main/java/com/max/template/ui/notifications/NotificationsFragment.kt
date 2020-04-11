@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.max.template.R
+import com.max.template.ui.base.DaggerFragment
 
 class NotificationsFragment : Fragment() {
 
