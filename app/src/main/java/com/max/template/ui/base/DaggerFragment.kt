@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import com.max.template.App
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import org.greenrobot.eventbus.EventBus
 
-open class DaggerFragment: Fragment() {
+open class DaggerFragment: Fragment(), CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

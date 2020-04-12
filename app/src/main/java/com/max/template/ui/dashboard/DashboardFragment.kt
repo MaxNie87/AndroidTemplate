@@ -12,10 +12,15 @@ import com.max.template.R
 import com.max.template.databinding.FragmentDashboardBinding
 import com.max.template.ui.base.DaggerFragment
 import com.max.template.ui.event.MessageEvent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.greenrobot.eventbus.EventBus
 
 class DashboardFragment : Fragment() {
     private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var dataBinding: FragmentDashboardBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -25,7 +30,7 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
 
-        var dataBinding = FragmentDashboardBinding.inflate(inflater, container, false).apply {
+        dataBinding = FragmentDashboardBinding.inflate(inflater, container, false).apply {
             viewModel = dashboardViewModel
             fragment = this@DashboardFragment
         }
@@ -37,7 +42,23 @@ class DashboardFragment : Fragment() {
         return dataBinding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadDataWithCoroutine()
+    }
+
     fun postEventBus() {
         EventBus.getDefault().post(MessageEvent("This is from Event Bus Post."))
+    }
+
+    fun loadDataWithCoroutine() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = withContext(Dispatchers.IO) {
+                Thread.sleep(2 * 1000)
+                "Coroutine Operation"
+            }
+
+            dataBinding.textDashboard.text = result
+        }
     }
 }

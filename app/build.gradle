@@ -70,4 +70,7 @@ dependencies {
 
     def event_bus = "3.2.0"
     implementation "org.greenrobot:eventbus:$event_bus"
+
+    def coroutine = "1.1.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine"
 }
