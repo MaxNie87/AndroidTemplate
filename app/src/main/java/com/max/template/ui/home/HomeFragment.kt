@@ -14,6 +14,7 @@ import com.max.template.databinding.FragmentHomeBinding
 import com.max.template.di.component.ViewModelFactory
 import com.max.template.ui.base.DaggerFragment
 import com.max.template.ui.event.MessageEvent
+import com.max.template.ui.observer.addEventBusObserver
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.intellij.lang.annotations.Subst
@@ -30,6 +31,11 @@ class HomeFragment : DaggerFragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var dataBinding: FragmentHomeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        this.addEventBusObserver()
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -50,7 +56,7 @@ class HomeFragment : DaggerFragment() {
         return dataBinding.root
     }
 
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    @Subscribe
     fun handEventBus(event: MessageEvent) {
         Toast.makeText(this.context, event.message, Toast.LENGTH_LONG).show()
     }

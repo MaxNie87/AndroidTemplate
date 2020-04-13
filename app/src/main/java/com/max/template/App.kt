@@ -6,9 +6,11 @@ import com.max.template.di.component.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import javax.inject.Inject
 
-class App : Application(), HasAndroidInjector {
+class App : Application(), HasAndroidInjector, CoroutineScope by MainScope() {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 

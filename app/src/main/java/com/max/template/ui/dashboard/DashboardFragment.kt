@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import com.max.template.R
 import com.max.template.databinding.FragmentDashboardBinding
 import com.max.template.ui.base.DaggerFragment
@@ -51,8 +52,8 @@ class DashboardFragment : Fragment() {
         EventBus.getDefault().post(MessageEvent("This is from Event Bus Post."))
     }
 
-    fun loadDataWithCoroutine() {
-        GlobalScope.launch(Dispatchers.Main) {
+    private fun loadDataWithCoroutine() {
+        lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 Thread.sleep(2 * 1000)
                 "Coroutine Operation"
